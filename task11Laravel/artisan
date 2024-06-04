@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Input\ArgvInput;
+
+define('LARAVEL_START', microtime(true));
+
+//Зареєструйте автозавантажувач Composer..
+require __DIR__.'/vendor/autoload.php';
+
+// Завантажте Laravel і обробіть команду...
+$status = (require_once __DIR__.'/bootstrap/app.php')
+    ->handleCommand(new ArgvInput);
+
+exit($status);
